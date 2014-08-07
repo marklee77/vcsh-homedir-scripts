@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+ 
+from getpass import getpass
+from sys import argv
+
+import gnomekeyring as gk
+
+keyring = 'login'
+
+script, command, service, user = argv
+
+attrs = { 'service' : service, 'user' : user }
+
+
+if command == 'get':
+    try:
+        result_list = gk.find_items_sync(gk.ITEM_GENERIC_SECRET, attrs)
+        print [result.secret for result in result_list][0]
+    except gk.NoMatchError:
+        pass
+elif command == 'set':
+    name = "'{}' on '{}'".format(user, service)
+    secret = getpass("Enter password for {}: ".format(name))
+    try:
+        result_list = gk.find_items_sync(gk.ITEM_GENERIC_SECRET, attrs)
+        gk.item_delete_sync(keyring, 
+                            [result.item_id for result in result_list][0])
+    except gk.NoMatchError:
+        pass
+    gk.item_create_sync(keyring, gk.ITEM_GENERIC_SECRET, name, attrs, secret, 
+                        True)
+

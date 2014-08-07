@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+ 
+import gnomekeyring
+ 
+for keyring in gnomekeyring.list_keyring_names_sync():
+    for id in sorted(gnomekeyring.list_item_ids_sync(keyring)):
+        print 'keyring {}, item {}:'.format(keyring, id)
+        item = gnomekeyring.item_get_info_sync(keyring, id)
+        print '{:>20}: {}'.format('display name', item.get_display_name())
+        print '{:>20}: {}'.format('secret', item.get_secret())
+        attributes = gnomekeyring.item_get_attributes_sync(keyring, id)
+        for name, value in attributes.iteritems():
+            print '{:>20}: {}'.format(name, value)
+    else:
+        if len(gnomekeyring.list_item_ids_sync(keyring)) == 0:
+            print '[%s] --empty--' % keyring
+
