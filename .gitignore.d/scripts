@@ -1,0 +1,14 @@
+*
+!.config
+!.config/mr
+!.config/mr/config.d
+!.config/mr/config.d/scripts
+!.gitignore.d
+!.gitignore.d/scripts
+!.local
+!.local/bin
+!.local/bin/cfsshproxy.sh
+!.local/bin/git-remote-gcrypt
+!.local/bin/git-subtree
+!.local/bin/keyring
+!.local/bin/show-keyring
