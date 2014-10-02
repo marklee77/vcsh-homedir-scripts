@@ -1,8 +1,4 @@
 *
-!.config
-!.config/mr
-!.config/mr/config.d
-!.config/mr/config.d/scripts
 !.gitignore.d
 !.gitignore.d/scripts
 !.local
