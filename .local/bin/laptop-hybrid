@@ -1,0 +1,11 @@
+#!/bin/sh
+WAKEALARM=/sys/class/rtc/rtc0/wakealarm
+SLEEPLENGTH=+1hour
+date +%s -d${SLEEPLENGTH} > ${WAKEALARM}
+laptop-suspend
+ALARM=$(cat ${WAKEALARM})
+NOW=$(date +%s)
+if [ -z ${ALARM} ] || [ ${NOW} -ge ${ALARM} ]; then
+    laptop-hibernate
+fi
+echo 0 > ${WAKEALARM}
