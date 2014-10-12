@@ -1,0 +1,2 @@
+#!/bin/sh
+i3lock -d -c 002b36 && dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate

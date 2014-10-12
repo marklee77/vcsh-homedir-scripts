@@ -6,5 +6,7 @@
 !.local/bin/cfsshproxy.sh
 !.local/bin/git-remote-gcrypt
 !.local/bin/git-subtree
+!.local/bin/laptop-hibernate
+!.local/bin/laptop-suspend
 !.local/bin/keyring
 !.local/bin/show-keyring
