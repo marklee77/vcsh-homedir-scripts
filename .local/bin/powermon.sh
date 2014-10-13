@@ -6,6 +6,8 @@ BATTERY_HIBERNATE_MINUTES=3
 # power management scripts. There may be a better way to do this (systemd), but 
 # Ubuntu doesn't seem to want to make it easy.
 
+# notify functions that can send to tmux if not in X?
+
 # blank screen after 10 minutes
 xset s 600 600
 
