@@ -1,3 +1,0 @@
-#!/bin/sh
-xset dpms force off
-i3lock -c 002b36 

@@ -6,10 +6,5 @@
 !.local/bin/cfsshproxy.sh
 !.local/bin/git-remote-gcrypt
 !.local/bin/git-subtree
-!.local/bin/laptop-lock
-!.local/bin/laptop-hibernate
-!.local/bin/laptop-hybrid
-!.local/bin/laptop-suspend
 !.local/bin/keyring
-!.local/bin/powermon.sh
 !.local/bin/show-keyring
