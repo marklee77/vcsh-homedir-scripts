@@ -313,14 +313,14 @@ CLEAN_FINAL()
 
 ENCRYPT()
 {
-	gpg --batch --no-tty --force-mdc --compress-algo none --trust-model=always --passphrase-fd 3 -c 3<<EOF
+	gpg --batch --force-mdc --compress-algo none --trust-model=always --passphrase-fd 3 -c 3<<EOF
 $1
 EOF
 }
 
 DECRYPT()
 {
-	gpg -q --batch --no-tty --no-default-keyring --secret-keyring /dev/null \
+	gpg -q --batch --no-default-keyring --secret-keyring /dev/null \
 		--keyring /dev/null --passphrase-fd 3 -d  3<<EOF
 $1
 EOF
@@ -333,7 +333,7 @@ PRIVENCRYPT()
 	if isnonnull "$Conf_signkey"; then
 		set -- "$@" -u "$Conf_signkey"
 	fi
-	gpg --batch --no-tty --compress-algo none --trust-model=always -se "$@"
+	gpg --batch --compress-algo none --trust-model=always -se "$@"
 }
 
 # $1 is the match for good signature, $2 is the textual signers list
