@@ -333,7 +333,7 @@ PRIVENCRYPT()
 	if isnonnull "$Conf_signkey"; then
 		set -- "$@" -u "$Conf_signkey"
 	fi
-	gpg --compress-algo none --trust-model=always -se "$@"
+	gpg --batch --compress-algo none --trust-model=always -se "$@"
 }
 
 # $1 is the match for good signature, $2 is the textual signers list
