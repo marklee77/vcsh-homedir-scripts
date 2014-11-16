@@ -320,7 +320,7 @@ EOF
 
 DECRYPT()
 {
-	gpg -q --batch --no-default-keyring --secret-keyring /dev/null \
+	gpg -q --batch --no-tty --no-default-keyring --secret-keyring /dev/null \
 		--keyring /dev/null --passphrase-fd 3 -d  3<<EOF
 $1
 EOF
