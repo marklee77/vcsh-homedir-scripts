@@ -6,4 +6,5 @@
 !.local/bin/git-remote-gcrypt
 !.local/bin/git-subtree
 !.local/bin/keyring
+!.local/bin/record_screen.sh
 !.local/bin/show-keyring
