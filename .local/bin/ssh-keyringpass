@@ -10,6 +10,7 @@ def main(argv=None):
 
     parser = ArgumentParser(
         description='provide password for SSH_STORE from gnome keyring')
+    parser.add_argument('user', help='user name')
     parser.parse_args()
 
     ssh_store = os.getenv('SSH_STORE', '')
