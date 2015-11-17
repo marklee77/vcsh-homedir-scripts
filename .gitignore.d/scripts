@@ -8,3 +8,4 @@
 !.local/bin/keyring
 !.local/bin/record_screen.sh
 !.local/bin/show-keyring
+!.local/bin/ssh-keyringpass

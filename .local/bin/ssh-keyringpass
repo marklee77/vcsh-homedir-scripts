@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+import gnomekeyring as gk
+import os
+import sys
+
+from argparse import ArgumentParser
+
+
+def main(argv=None):
+
+    parser = ArgumentParser(
+        description='provide password for SSH_STORE from gnome keyring')
+    parser.parse_args()
+
+    ssh_store = os.getenv('SSH_STORE', '')
+    attrs = {'unique': 'ssh-store:{}'.format(ssh_store)}
+
+    try:
+        result_list = gk.find_items_sync(gk.ITEM_GENERIC_SECRET, attrs)
+        print [result.secret for result in result_list][0]
+    except gk.NoMatchError:
+        pass
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
