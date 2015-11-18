@@ -10,7 +10,7 @@ def main(argv=None):
 
     parser = ArgumentParser(description='gnome keyring utility')
     parser.add_argument('action', help='action to perform',
-                        choices=['get', 'set'])
+                        choices=['get', 'set', 'set-ssh'])
     parser.add_argument('service', help='service name')
     parser.add_argument('user', help='user name')
 
@@ -28,6 +28,19 @@ def main(argv=None):
     elif args.action == 'set':
         name = "'{user}' on '{service}'".format(**attrs)
         secret = getpass("Enter password for {}: ".format(name))
+        try:
+            result_list = gk.find_items_sync(gk.ITEM_GENERIC_SECRET, attrs)
+            gk.item_delete_sync(keyring,
+                                [result.item_id for result in result_list][0])
+        except gk.NoMatchError:
+            pass
+        gk.item_create_sync(keyring, gk.ITEM_GENERIC_SECRET,
+                            name, attrs, secret, True)
+    elif args.action == 'set-ssh':
+        name = "Unlock password for: {}".format(args.user)
+        attrs = {'unique': 'ssh-store:{}'.format(args.service),
+                 'xdg:schema:': 'org.freedesktop.Secret.Generic'}
+        secret = getpass("Enter unlock password for {}: ".format(args.user))
         try:
             result_list = gk.find_items_sync(gk.ITEM_GENERIC_SECRET, attrs)
             gk.item_delete_sync(keyring,
