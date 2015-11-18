@@ -38,8 +38,7 @@ def main(argv=None):
                             name, attrs, secret, True)
     elif args.action == 'set-ssh':
         name = "Unlock password for: {}".format(args.user)
-        attrs = {'unique': 'ssh-store:{}'.format(args.service),
-                 'xdg:schema:': 'org.freedesktop.Secret.Generic'}
+        attrs = {'unique': 'ssh-store:{}'.format(args.service)}
         secret = getpass("Enter unlock password for {}: ".format(args.user))
         try:
             result_list = gk.find_items_sync(gk.ITEM_GENERIC_SECRET, attrs)
