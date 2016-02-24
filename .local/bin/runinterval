@@ -7,5 +7,5 @@ while true; do
     "$@"
     endtime=$(date +%s)
     timeleft=$(($starttime + $interval - $endtime))
-    [ $timeleft -gt 0 ] && echo "sleeping for $timeleft seconds..." && sleep $timeleft 
+    [ $timeleft -gt 0 ] && echo "sleeping for $timeleft seconds..." && sleep $timeleft
 done
