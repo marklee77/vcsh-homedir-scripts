@@ -1,0 +1,11 @@
+#!/bin/bash
+interval=$1
+shift
+while true; do
+    starttime=$(date +%s)
+    echo "running $1 at ${starttime}..."
+    "$@"
+    endtime=$(date +%s)
+    timeleft=$(($starttime + $interval - $endtime))
+    [ $timeleft -gt 0 ] && echo "sleeping for $timeleft seconds..." && sleep $timeleft 
+done
