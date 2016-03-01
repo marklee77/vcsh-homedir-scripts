@@ -1,15 +1,21 @@
 #!/bin/bash
 
 for FILE in "$@"; do
-    EXT=${FILE#*.}
+    EXT=$(echo ${FILE##*.} | tr '[:upper:]' '[:lower:]')
     if ! [ -f "${FILE}" ]; then
         echo "${FILE} not found..." >&2
     elif [ "${FILE}" = "${EXT}" ]; then
         echo "${FILE} does not have an extension." >&2
     fi
     case "${EXT}" in
+        htm) ;&
         html)
             firefox ${FILE} >/dev/null 2>&1 &
+            ;;
+        jpg) ;&
+        jpeg) ;&
+        gif)
+            geeqie ${FILE} >/dev/null 2>&1 &
             ;;
         pdf)
             evince ${FILE} >/dev/null 2>&1 &
