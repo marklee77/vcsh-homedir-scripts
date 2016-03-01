@@ -1,0 +1,21 @@
+#!/bin/bash
+
+for FILE in "$@"; do
+    EXT=${FILE#*.}
+    if ! [ -f "${FILE}" ]; then
+        echo "${FILE} not found..." >&2
+    elif [ "${FILE}" = "${EXT}" ]; then
+        echo "${FILE} does not have an extension." >&2
+    fi
+    case "${EXT}" in
+        html)
+            firefox ${FILE} >/dev/null 2>&1 &
+            ;;
+        pdf)
+            evince ${FILE} >/dev/null 2>&1 &
+            ;;
+        *)
+            echo "${FILE} extension not recognized." >&2
+            ;;
+    esac
+done
