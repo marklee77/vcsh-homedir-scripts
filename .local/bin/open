@@ -10,16 +10,16 @@ for FILE; do
     case "${EXT}" in
         htm) ;&
         html)
-            firefox ${FILE} >/dev/null 2>&1 &
+            firefox "${FILE}" >/dev/null 2>&1 &
             ;;
         jpg) ;&
         jpeg) ;&
         png) ;&
         gif)
-            geeqie ${FILE} >/dev/null 2>&1 &
+            geeqie "${FILE}" >/dev/null 2>&1 &
             ;;
         pdf)
-            evince ${FILE} >/dev/null 2>&1 &
+            evince "${FILE}" >/dev/null 2>&1 &
             ;;
         *)
             echo "${FILE} extension not recognized." >&2
