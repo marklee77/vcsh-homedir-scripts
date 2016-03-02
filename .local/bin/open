@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for FILE in "$@"; do
+for FILE; do
     EXT=$(echo ${FILE##*.} | tr '[:upper:]' '[:lower:]')
     if ! [ -f "${FILE}" ]; then
         echo "${FILE} not found..." >&2
