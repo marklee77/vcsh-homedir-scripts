@@ -8,18 +8,17 @@ for FILE; do
         echo "${FILE} does not have an extension." >&2
     fi
     case "${EXT}" in
-        htm) ;&
-        html)
+        htm|html)
             firefox "${FILE}" >/dev/null 2>&1 &
             ;;
-        jpg) ;&
-        jpeg) ;&
-        png) ;&
-        gif)
+        gif|jpg|jpeg|png)
             geeqie "${FILE}" >/dev/null 2>&1 &
             ;;
         pdf)
             evince "${FILE}" >/dev/null 2>&1 &
+            ;;
+        doc|docx|xls|ppt)
+            loffice "${FILE}" >/dev/null 2>&1 & 
             ;;
         *)
             echo "${FILE} extension not recognized." >&2
