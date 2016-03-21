@@ -1,4 +1,8 @@
 *
+!.config
+!.config/mr
+!.config/mr/config.d
+!.config/mr/config.d/scripts
 !.gitignore.d
 !.gitignore.d/scripts
 !.local
@@ -10,3 +14,4 @@
 !.local/bin/record_screen.sh
 !.local/bin/show-keyring
 !.local/bin/ssh-keyringpass
+!.local/bin/transfer

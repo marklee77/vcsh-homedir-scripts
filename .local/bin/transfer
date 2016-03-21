@@ -1,0 +1,2 @@
+#!/bin/bash
+curl --upload-file $1 https://transfer.sh | tee >(xclip -i -sel clipboard)
