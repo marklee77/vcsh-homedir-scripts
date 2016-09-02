@@ -10,7 +10,7 @@ for FILE; do
     case "${EXT}" in
         htm|html)
             #firefox "${FILE}" >/dev/null 2>&1 &
-            chrome "${FILE}" >/dev/null 2>&1 &
+            firefox "${FILE}" >/dev/null 2>&1 &
             ;;
         gif|jpg|jpeg|png)
             geeqie "${FILE}" >/dev/null 2>&1 &
