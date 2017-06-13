@@ -15,11 +15,11 @@ for FILE; do
         gif|jpg|jpeg|png)
             geeqie "${FILE}" >/dev/null 2>&1 &
             ;;
-        pdf)
+        pdf|eps)
             evince "${FILE}" >/dev/null 2>&1 &
             ;;
         doc|docx|xls|ppt)
-            loffice "${FILE}" >/dev/null 2>&1 & 
+            loffice "${FILE}" >/dev/null 2>&1 &
             ;;
         *)
             echo "${FILE} extension not recognized." >&2
