@@ -1,28 +1,27 @@
 #!/bin/bash
 
-for FILE; do
-    EXT=$(echo ${FILE##*.} | tr '[:upper:]' '[:lower:]')
-    if ! [ -f "${FILE}" ]; then
-        echo "${FILE} not found..." >&2
-    elif [ "${FILE}" = "${EXT}" ]; then
-        echo "${FILE} does not have an extension." >&2
+for file; do
+    ext="$(echo "${file##*.}" | tr '[:upper:]' '[:lower:]')"
+    if ! [ -f "${file}" ]; then
+        echo "${file} not found..." >&2
+    elif [ "${file}" = "${ext}" ]; then
+        echo "${file} does not have an extension." >&2
     fi
-    case "${EXT}" in
+    case "${ext}" in
         htm|html)
-            #firefox "${FILE}" >/dev/null 2>&1 &
-            firefox "${FILE}" >/dev/null 2>&1 &
+            firefox "${file}" >/dev/null 2>&1 &
             ;;
         gif|jpg|jpeg|png)
-            geeqie "${FILE}" >/dev/null 2>&1 &
+            geeqie "${file}" >/dev/null 2>&1 &
             ;;
         pdf|eps)
-            evince "${FILE}" >/dev/null 2>&1 &
+            evince "${file}" >/dev/null 2>&1 &
             ;;
         doc|docx|xls|ppt)
-            loffice "${FILE}" >/dev/null 2>&1 &
+            loffice "${file}" >/dev/null 2>&1 &
             ;;
         *)
-            echo "${FILE} extension not recognized." >&2
+            echo "${file} extension not recognized." >&2
             ;;
     esac
 done
